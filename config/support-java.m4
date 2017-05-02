@@ -110,8 +110,8 @@ if test "x$USE_JAVA" = x1; then
 
 echo "JAVA=${JAVA}"
 
-    # Determine java version, e.g. java version "1.7.0_51"
-    JAVA_VERSION=`${JAVA} -version 2>&1 | grep "java version" | sed 's/java version//' | sed 's/"//g'`
+    # Determine java version, e.g. java version "1.7.0_51" or openjdk version "1.8.0_121"
+    JAVA_VERSION=`${JAVA} -version 2>&1 | grep "version" | sed 's/java version//' | sed 's/openjdk version//' | sed 's/"//g'`
     JAVA_VERSION_MAJOR=`echo ${JAVA_VERSION} | awk 'BEGIN {FS="."} {print [$]1}'`
     JAVA_VERSION_MINOR=`echo ${JAVA_VERSION} | awk 'BEGIN {FS="."} {print [$]2}'`
     JAVA_VERSION_PATCH=`echo ${JAVA_VERSION} | awk 'BEGIN {FS="."} {print [$]3}' | awk 'BEGIN {FS="_"} {print [$]1}'`
